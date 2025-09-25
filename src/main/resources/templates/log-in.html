@@ -6,9 +6,9 @@
     <title>Document</title>
 </head>
 <body>
-    <form th:action="@{/loginProc}" method="post" name="loginForm" th:object="${user}">
-        <input type="text" name="username" id="username" placeholder="id" th:field="*{username}">
-        <input type="password" name="password" id="password" placeholder="pw" th:field="*{password}">
+    <form th:action="@{/loginProc}" method="post" name="loginForm">
+        <input type="text" name="username" id="username" placeholder="id">
+        <input type="password" name="password" id="password" placeholder="pw">
         <!-- <input type="hidden" name="_csrf" th:value="${_csrf.token}">| -->
         <input type="submit" value="login">
     </form>
