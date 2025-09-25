@@ -11,6 +11,9 @@
 	<span th:text="${role}">role</span><br>
 	<a href="/login">로그인 페이지</a><br>
 	<a href="/signup">회원 가입</a><br>
+	<form method="post" action="/logout">
+	    <button type="submit">로그아웃</button>
+	</form>
 	<a th:href="@{/admin}">로그인 후 와야하는 페이지</a>
 </body>
 </html>
