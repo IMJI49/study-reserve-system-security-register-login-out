@@ -1,0 +1,16 @@
+
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<span th:text="${id}">id</span><br>
+	<span th:text="${role}">role</span><br>
+	<a href="/login">로그인 페이지</a><br>
+	<a href="/signup">회원 가입</a><br>
+	<a th:href="@{/admin}">로그인 후 와야하는 페이지</a>
+</body>
+</html>

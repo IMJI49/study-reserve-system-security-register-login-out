@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta name="csrf-token" th:content="${_csrf.token}"/> -->
+    <!-- <meta name="csrf-header" th:content="${_csrf.headerName}"/> -->
+    <title>Document</title>
+</head>
+<body>
+    <form th:action="@{/signUpProc}" method="post" name="signUpForm" th:object="${user}">
+        <input type="text" name="username" id="username" placeholder="id" th:field="*{username}">
+        <input type="password" name="password" id="password" placeholder="pw" th:field="*{password}">
+        <!-- <input type="hidden" name="_csrf" th:value="${_csrf.token}"> -->
+        <input type="submit" value="signup">
+    </form>
+</body>
+</html>
