@@ -17,10 +17,8 @@ public class UserRegisterService {
 	private final UserRepository userRepository;
 	private final BCryptPasswordEncoder encoder;
 
-
 	public User findById(Long id) {
-		return userRepository.findById(id).orElseThrow(() -> new UsernameNotFoundException(
-				id + "의 User를 찾을 수 없습니다."));
+		return userRepository.findById(id).orElseThrow(() -> new UsernameNotFoundException(id + "의 User를 찾을 수 없습니다."));
 	}
 
 	public User register(UserRegisterDTO dto) {
