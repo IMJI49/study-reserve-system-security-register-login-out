@@ -21,8 +21,6 @@ public class MainController {
 	public String home(Model model) {
 		String id = SecurityContextHolder.getContext().getAuthentication().getName();
 		String role = SecurityContextHolder.getContext().getAuthentication().getAuthorities().iterator().next().getAuthority();
-		System.out.println(id);
-		System.out.println(role);
 		model.addAttribute("id", id);
 		model.addAttribute("role", role);
 		return "home";
