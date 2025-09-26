@@ -12,7 +12,7 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class UserJPAService {
+public class UserJpaService {
 	private final UserRepository userRepository;
 	public List<User> findAll(){
 		return userRepository.findAll();

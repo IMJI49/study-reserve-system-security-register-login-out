@@ -40,6 +40,6 @@ public class MainController {
 	}
 	@GetMapping("/login")
 	public String userLogin() {
-		return "log-in";
+		return "login";
 	}
 }

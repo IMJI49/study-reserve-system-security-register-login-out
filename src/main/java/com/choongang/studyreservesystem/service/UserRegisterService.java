@@ -21,8 +21,12 @@ public class UserRegisterService {
 		if (userRepository.existsByUsername(dto.getUsername())) {
 			throw new IllegalArgumentException("이미 존재하는 아이디입니다.");
 		}
-		user = User.builder().username(dto.getUsername()).password(encoder.encode(dto.getPassword())).role("ROLE_USER")
-				.name(dto.getName()).build();
+		user = User.builder().username(dto.getUsername())
+							.password(encoder.encode(dto.getPassword()))
+							.role("ROLE_USER")
+							.name(dto.getName())
+							.email(dto.getEmail())
+							.build();
 		return userRepository.save(user);
 	}
 
