@@ -1,4 +1,4 @@
-package com.choongang.studyreservesystem.entity;
+package com.choongang.studyreservesystem.domain;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

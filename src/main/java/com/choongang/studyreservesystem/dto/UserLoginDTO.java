@@ -6,7 +6,7 @@ import java.util.Collection;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.choongang.studyreservesystem.entity.User;
+import com.choongang.studyreservesystem.domain.User;
 
 @SuppressWarnings("serial")
 public class UserLoginDTO implements UserDetails {

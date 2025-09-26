@@ -1,11 +1,10 @@
 package com.choongang.studyreservesystem.service;
 
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.choongang.studyreservesystem.domain.User;
 import com.choongang.studyreservesystem.dto.UserRegisterDTO;
-import com.choongang.studyreservesystem.entity.User;
 import com.choongang.studyreservesystem.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -16,10 +15,6 @@ public class UserRegisterService {
 
 	private final UserRepository userRepository;
 	private final BCryptPasswordEncoder encoder;
-
-	public User findById(Long id) {
-		return userRepository.findById(id).orElseThrow(() -> new UsernameNotFoundException(id + "의 User를 찾을 수 없습니다."));
-	}
 
 	public User register(UserRegisterDTO dto) {
 		User user = new User();
