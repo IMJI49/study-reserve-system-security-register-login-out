@@ -35,7 +35,10 @@ public class UserJpaService {
 		dto.setEmail(user.getEmail());
 		return dto; 
 	}
-
+	
+	public boolean existsByUsername(String username) {
+		return userRepository.existsByUsername(username);
+	}
 
 	public void register(UserRegisterDto dto) {
 		User user = new User();
