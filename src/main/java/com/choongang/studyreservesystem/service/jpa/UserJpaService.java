@@ -1,4 +1,4 @@
-package com.choongang.studyreservesystem.service;
+package com.choongang.studyreservesystem.service.jpa;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import com.choongang.studyreservesystem.domain.User;
 import com.choongang.studyreservesystem.dto.UserRegisterDto;
 import com.choongang.studyreservesystem.dto.UserResponseDto;
-import com.choongang.studyreservesystem.repository.UserRepository;
+import com.choongang.studyreservesystem.repository.jpa.UserRepository;
 
 import lombok.RequiredArgsConstructor;
 

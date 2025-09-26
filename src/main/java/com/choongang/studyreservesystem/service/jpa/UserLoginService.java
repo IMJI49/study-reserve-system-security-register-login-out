@@ -1,4 +1,4 @@
-package com.choongang.studyreservesystem.service;
+package com.choongang.studyreservesystem.service.jpa;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -6,7 +6,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.choongang.studyreservesystem.dto.UserLoginDto;
-import com.choongang.studyreservesystem.repository.UserRepository;
+import com.choongang.studyreservesystem.repository.jpa.UserRepository;
 
 import lombok.RequiredArgsConstructor;
 

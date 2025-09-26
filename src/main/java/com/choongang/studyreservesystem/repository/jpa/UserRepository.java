@@ -1,4 +1,4 @@
-package com.choongang.studyreservesystem.repository;
+package com.choongang.studyreservesystem.repository.jpa;
 
 import java.util.Optional;
 

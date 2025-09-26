@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.choongang.studyreservesystem.dto.UserRegisterDto;
-import com.choongang.studyreservesystem.service.UserJpaService;
+import com.choongang.studyreservesystem.service.jpa.UserJpaService;
 
 import lombok.RequiredArgsConstructor;
 
