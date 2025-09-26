@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.choongang.studyreservesystem.dto.UserRegisterDto;
-import com.choongang.studyreservesystem.service.UserRegisterService;
+import com.choongang.studyreservesystem.service.UserJpaService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -15,7 +15,7 @@ import lombok.RequiredArgsConstructor;
 @Controller
 @RequiredArgsConstructor
 public class MainController {
-	private final UserRegisterService userRegisterService;
+	private final UserJpaService userJpaService;
 
 	@GetMapping("/")
 	public String home(Model model) {
@@ -35,7 +35,7 @@ public class MainController {
 
 	@PostMapping("/register")
 	public String postMethodName(UserRegisterDto dto, Model model) {
-		userRegisterService.register(dto);
+		userJpaService.register(dto);
 		return "redirect:/";
 	}
 	@GetMapping("/login")
