@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.choongang.studyreservesystem.dto.UserRegisterDTO;
+import com.choongang.studyreservesystem.dto.UserRegisterDto;
 import com.choongang.studyreservesystem.service.UserRegisterService;
 
 import lombok.RequiredArgsConstructor;
@@ -28,13 +28,13 @@ public class MainController {
 
 	@GetMapping("/register")
 	public String userRegister(Model model) {
-		UserRegisterDTO dto = new UserRegisterDTO();
+		UserRegisterDto dto = new UserRegisterDto();
 		model.addAttribute("user", dto);
 		return "register";
 	}
 
 	@PostMapping("/register")
-	public String postMethodName(UserRegisterDTO dto, Model model) {
+	public String postMethodName(UserRegisterDto dto, Model model) {
 		userRegisterService.register(dto);
 		return "redirect:/";
 	}

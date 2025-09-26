@@ -9,10 +9,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 import com.choongang.studyreservesystem.domain.User;
 
 @SuppressWarnings("serial")
-public class UserLoginDTO implements UserDetails {
+public class UserLoginDto implements UserDetails {
 	private User user;
 
-	public UserLoginDTO(User user) {
+	public UserLoginDto(User user) {
 		this.user = user;
 	}
 
