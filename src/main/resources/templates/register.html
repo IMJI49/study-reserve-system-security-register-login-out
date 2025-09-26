@@ -8,9 +8,11 @@
     <title>Document</title>
 </head>
 <body>
-    <form th:action="@{/signUpProc}" method="post" name="signUpForm" th:object="${user}">
+    <form th:action="@{/register}" method="post" name="signUpForm" th:object="${user}">
         <input type="text" name="username" id="username" placeholder="id" th:field="*{username}">
         <input type="password" name="password" id="password" placeholder="pw" th:field="*{password}">
+        <input type="text" name="name" id="name" placeholder="name" th:field="*{name}">
+        <input type="text" name="email" id="email" placeholder="email" th:field="*{email}">
         <!-- <input type="hidden" name="_csrf" th:value="${_csrf.token}"> -->
         <input type="submit" value="signup">
     </form>
