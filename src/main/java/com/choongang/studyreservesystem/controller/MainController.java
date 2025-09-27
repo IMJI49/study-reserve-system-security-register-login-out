@@ -36,7 +36,7 @@ public class MainController {
 	@PostMapping("/register")
 	public String postMethodName(UserRegisterDto dto, Model model) {
 		userJpaService.register(dto);
-		return "redirect:/";
+		return "redirect:/login";
 	}
 	@GetMapping("/login")
 	public String userLogin() {
