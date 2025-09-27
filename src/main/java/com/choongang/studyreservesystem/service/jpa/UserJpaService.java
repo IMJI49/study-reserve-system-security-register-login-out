@@ -8,6 +8,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.choongang.studyreservesystem.domain.User;
+import com.choongang.studyreservesystem.dto.UserFindUsernameDto;
 import com.choongang.studyreservesystem.dto.UserRegisterDto;
 import com.choongang.studyreservesystem.dto.UserResponseDto;
 import com.choongang.studyreservesystem.repository.jpa.UserRepository;
@@ -17,8 +18,11 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class UserJpaService {
+
 	private final UserRepository userRepository;
 	private final BCryptPasswordEncoder encoder;
+
+
 	
 	public List<UserResponseDto> findAll(){
 		List<User> allList = userRepository.findAll(); 
@@ -53,9 +57,15 @@ public class UserJpaService {
 							.build();
 		userRepository.save(user);
 	}
-	public String findUserNameFromNameAndEmail(String name, String email) {
-		User user = userRepository.findBynameAndEmail(name, email).orElse(null);
-		
-		return user.getUsername();
+	public List<UserFindUsernameDto> findUserNameFromNameAndEmail(String name, String email) {
+		List<User> users = userRepository.findBynameAndEmail(name, email);
+		if (users == null) {
+			return null;
+		}
+		List<UserFindUsernameDto> dtos = new ArrayList<>();
+		for (User user : users) {
+			dtos.add(new UserFindUsernameDto(user.getUsername()));
+		}
+		return dtos;
 	}
 }
