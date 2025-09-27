@@ -53,4 +53,9 @@ public class UserJpaService {
 							.build();
 		userRepository.save(user);
 	}
+	public String findUserNameFromNameAndEmail(String name, String email) {
+		User user = userRepository.findBynameAndEmail(name, email).orElse(null);
+		
+		return user.getUsername();
+	}
 }
