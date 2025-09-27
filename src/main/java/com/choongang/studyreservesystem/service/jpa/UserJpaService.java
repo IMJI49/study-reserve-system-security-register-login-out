@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.choongang.studyreservesystem.domain.User;
 import com.choongang.studyreservesystem.dto.UserFindUsernameDto;
+import com.choongang.studyreservesystem.dto.UserPasswordChangeDto;
 import com.choongang.studyreservesystem.dto.UserRegisterDto;
 import com.choongang.studyreservesystem.dto.UserResponseDto;
 import com.choongang.studyreservesystem.repository.jpa.UserRepository;
@@ -67,5 +68,19 @@ public class UserJpaService {
 			dtos.add(new UserFindUsernameDto(user.getUsername()));
 		}
 		return dtos;
+	}
+	public boolean matchUsernameAndEmail(UserPasswordChangeDto dto) {
+		return userRepository.existsByUsernameAndEmail(dto.getUsername(), dto.getEmail());
+	}
+	public void passwordChange(UserPasswordChangeDto dto) {
+		User user = userRepository.findByUsername(dto.getUsername()).orElseThrow(() -> new UsernameNotFoundException("유저를 찾을 수 없습니다."));
+		User updatedUser = User.builder()
+						    .id(user.getId())
+						    .username(user.getUsername())
+						    .email(user.getEmail())
+						    .role(user.getRole())
+						    .password(encoder.encode(dto.getChangePassword()))
+						    .build();
+		userRepository.save(updatedUser);
 	}
 }

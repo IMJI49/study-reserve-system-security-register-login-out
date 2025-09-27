@@ -144,7 +144,7 @@
 
         <div class="input-group" id="password-confirm-group">
             <label th:for="passwordconfirm">비밀번호 확인</label>
-            <input type="password" th:field="*{passwordConfirm}" placeholder="비밀번호를 한번 더  입력하세요" required id="password-confirm">
+            <input type="password" placeholder="비밀번호를 한번 더  입력하세요" required id="password-confirm">
             <div id="password-confirm-check" class="d-flex align-items-center justify-content-center mt-1"></div>
         </div>
 
@@ -176,7 +176,6 @@
     async function checkUsername() {
         const username = document.querySelector('input[name="username"]').value;
         const resultDiv = document.getElementById('result');
-
         if (!username) {
             resultDiv.textContent = '아이디를 입력하세요.';
             resultDiv.style.color = 'red';
@@ -186,7 +185,6 @@
             resultDiv.style.color = 'red';
             return;
         }
-
         try {
             const response = await fetch(`/api/check-username?username=${username}`);
             const data = await response.json();
@@ -220,7 +218,6 @@
             alert('비밀번호와 비밀번호 확인이 일치하지 않습니다.');
             return;
         }
-        
     });
 
     passwordInput.addEventListener('input', () => {
@@ -234,7 +231,6 @@
             passwordCheckDiv.textContent = '';
             passwordInput.setCustomValidity('');
             password.classList.remove('is-invalid');
-
         }
     });
     passwordConfirmInput.addEventListener('input', () => {

@@ -29,4 +29,5 @@ public class User {
 	private boolean deleted;
 	@Column(nullable = false)
 	private String role;
+	
 }
