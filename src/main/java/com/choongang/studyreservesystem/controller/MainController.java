@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.choongang.studyreservesystem.dto.UserPasswordChangeDto;
 import com.choongang.studyreservesystem.dto.UserRegisterDto;
 import com.choongang.studyreservesystem.service.jpa.UserJpaService;
 
@@ -43,8 +44,24 @@ public class MainController {
 		return "login";
 	}
 	@GetMapping("/help")
-	public String findIdAndPassword() {
+	public String findIdAndPassword(Model model) {
+		UserPasswordChangeDto dto = new UserPasswordChangeDto();
+		model.addAttribute("user", dto);
 		return "help";
 	}
 	
+	@PostMapping("/reset-password")
+	public String resetPassword(UserPasswordChangeDto dto, Model model) {
+		if (userJpaService.matchUsernameAndEmail(dto)) {
+			model.addAttribute("user", dto);
+			return "password-change";
+		}
+		return "redirect:/help";
+	}
+	
+	@PostMapping("/change-password")
+	public String methodName(UserPasswordChangeDto dto) {
+		userJpaService.passwordChange(dto);
+		return "redirect:/login";
+	}
 }

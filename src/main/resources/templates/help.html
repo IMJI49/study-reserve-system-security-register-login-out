@@ -39,14 +39,14 @@
                 <hr>
                 <h3 class="card-title text-center mb-4">비밀번호 재설정</h3>
                 <hr>
-                <form th:action="@{/reset-password}" method="post">
+                <form th:action="@{/reset-password}" method="post" th:object="${user}">
                     <div class="form-group">
                         <label for="userId">아이디</label>
-                        <input type="text" class="form-control" id="userId" name="userId" placeholder="아이디를 입력하세요" required>
+                        <input type="text" class="form-control" id="userId" name="userId" placeholder="아이디를 입력하세요" th:field="*{username}" required>
                         <label for="emailForReset">이메일</label>
-                        <input type="email" class="form-control" id="emailForReset" name="emailForReset" placeholder="이메일을 입력하세요" required>
+                        <input type="email" class="form-control" id="emailForReset" name="emailForReset" placeholder="이메일을 입력하세요" th:field="*{email}" required>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-block">비밀번호 재설정 링크 보내기</button>
+                    <button type="submit" class="btn btn-primary btn-block">비밀번호 재설정 하기</button>
                 </form>
                 <div class="text-center mt-3">
                     <a href="/login">로그인 페이지로 돌아가기</a>
