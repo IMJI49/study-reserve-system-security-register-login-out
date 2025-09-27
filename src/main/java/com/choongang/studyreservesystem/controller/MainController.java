@@ -42,4 +42,8 @@ public class MainController {
 	public String userLogin() {
 		return "login";
 	}
+	@GetMapping("/help")
+	public String findIdAndPassword() {
+		return "help";
+	}
 }

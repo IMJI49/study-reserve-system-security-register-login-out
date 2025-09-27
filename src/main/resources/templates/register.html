@@ -136,14 +136,16 @@
             <div id="result" class="ml-3 mt-1 d-flex justify-content-center align-items-center"></div>
         </div>
 
-        <div class="input-group">
+        <div class="input-group" id="password-group">
             <label th:for="password">비밀번호</label>
-            <input type="password" th:field="*{password}" placeholder="비밀번호 (8자 이상)" required>
+            <input type="password" th:field="*{password}" placeholder="비밀번호 (8자 이상)" required id="password">
+            <div id="password-check" class="d-flex align-items-center justify-content-center mt-1"></div>
         </div>
 
-        <div class="input-group">
+        <div class="input-group" id="password-confirm-group">
             <label th:for="passwordconfirm">비밀번호 확인</label>
-            <input type="password" th:field="*{passwordConfirm}" placeholder="비밀번호를 한번 더  입력하세요" required>
+            <input type="password" th:field="*{passwordConfirm}" placeholder="비밀번호를 한번 더  입력하세요" required id="password-confirm">
+            <div id="password-confirm-check" class="d-flex align-items-center justify-content-center mt-1"></div>
         </div>
 
         <div class="input-group">
@@ -165,6 +167,12 @@
 </div>
 <script>
     let isUsernameChecked = false;
+    const password = document.getElementById('password');
+    const passwordConfirm = document.getElementById('password-confirm');
+    const passwordInput = document.getElementById('password-group').querySelector('input');
+    const passwordConfirmInput = document.getElementById('password-confirm-group').querySelector('input');
+    const passwordCheckDiv = document.getElementById('password-check');
+    const passwordConfirmCheckDiv = document.getElementById('password-confirm-check');
     async function checkUsername() {
         const username = document.querySelector('input[name="username"]').value;
         const resultDiv = document.getElementById('result');
@@ -173,7 +181,7 @@
             resultDiv.textContent = '아이디를 입력하세요.';
             resultDiv.style.color = 'red';
             return;
-        } else if (username.length < 4) {
+        } else if (username.length < 3) {
             resultDiv.textContent = '아이디는 최소 4자 이상이어야 합니다.';
             resultDiv.style.color = 'red';
             return;
@@ -202,6 +210,43 @@
         if (!isUsernameChecked) {
             e.preventDefault(); // 폼 제출 막기
             alert('아이디 중복 확인을 먼저 해주세요.');
+        }
+        if (passwordInput.value.length < 8) {
+            e.preventDefault(); // 폼 제출 막기
+            alert('비밀번호는 최소 8자 이상이어야 합니다.');
+            return;
+        } else if (passwordInput.value !== passwordConfirmInput.value) {
+            e.preventDefault(); // 폼 제출 막기
+            alert('비밀번호와 비밀번호 확인이 일치하지 않습니다.');
+            return;
+        }
+        
+    });
+
+    passwordInput.addEventListener('input', () => {
+        if(passwordInput.value.length < 8) {
+            
+            passwordCheckDiv.textContent = '비밀번호는 최소 8자 이상이어야 합니다.';
+            passwordCheckDiv.style.color = 'red';
+            passwordInput.setCustomValidity('비밀번호는 최소 8자 이상이어야 합니다.');
+            password.classList.add('is-invalid');
+        } else {
+            passwordCheckDiv.textContent = '';
+            passwordInput.setCustomValidity('');
+            password.classList.remove('is-invalid');
+
+        }
+    });
+    passwordConfirmInput.addEventListener('input', () => {
+        if(passwordInput.value !== passwordConfirmInput.value) {
+            passwordConfirmCheckDiv.textContent = '비밀번호가 일치하지 않습니다.';
+            passwordConfirmCheckDiv.style.color = 'red';
+            passwordConfirmInput.setCustomValidity('비밀번호가 일치하지 않습니다.');
+            passwordConfirm.classList.add('is-invalid');
+        } else {
+            passwordConfirmCheckDiv.textContent = '';
+            passwordConfirmInput.setCustomValidity('');
+            passwordConfirm.classList.remove('is-invalid');
         }
     });
 </script>
